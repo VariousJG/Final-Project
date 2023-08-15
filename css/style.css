@@ -1,4 +1,74 @@
 body{
-    background-color: black;
+    background-image: url("https://gadhagod.github.io/hyrule-compendium-demo/images/texture.jpeg") ;
     color: white;
 }
+
+/* Font Styling - This is currently not working */
+@font-face {
+    font-family: "hylia-serif-beta-regular";
+    src: url("../fonts/HyliaSerifBeta-Regular.otf") format("opentype");
+  }
+
+  .hylia-font {
+    font-family: "hylia-serif-beta-regular", sans-serif;
+  }
+
+/* Compendium Header */
+
+.compendiumHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 2.5rem;
+}
+
+.searchFunction{
+    margin: 0;
+}
+
+
+/* Nav Bar */
+  .nav-icon {
+    margin: 0.5rem;
+    transition: transform 0.5s ease;
+  }
+  
+  .nav-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .nav-icon.selected {
+    transform: scale(1.2);
+    box-shadow: -1px 1px 16px 8px rgba(26, 112, 185, 0.85);
+  }
+  
+  #navigation-icons {
+    padding-top: 1rem;
+    height: 5.125rem;
+    position: fixed;
+    width: 100%;
+    top: 3.9rem;
+  }
+  
+  .nav-icon-wrapper > img {
+    width: 3.938rem;
+    height: 3.25rem;
+  }
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+
+.in-line-block {
+    display: inline-block;
+}
+
+/* .background-dark {
+    background-color: rgb(26, 20, 20);
+} */

@@ -5,16 +5,50 @@
 
     <link rel="stylesheet" href="css/style.css">
     
-    <script src="js/axios.min.js"></script>
-    <script src="js/main.js"></script>
-    
     <title>Final Project</title>
 </head>
 
 <body>
+  <header class ="compendiumHeader">
+    <h1 class="hylia-font">The Hyrule Compendium</h1>
 
-    <h1>Final Project Test</h1>
+    <form class="searchFunction">
+      <input type="text" id="compendium-search" placeholder="Search">
+      <button id="submit-button">Search</button>
+    </form>
+    
+  </header>
+
+<!--  -->
+    <section id="navigation-icons" class="background-dark">
+        <div class="row center">
+          <div class="col-full nav-icon-container align-center">
+            <div class="nav-icon-wrapper in-line-block">
+              <img src="images/Creatures.png" alt="Creatures" class="nav-icon selected" id="creatures">
+            </div>
+            <div class="nav-icon-wrapper in-line-block">
+              <img src="images/Monsters.png" alt="Monsters" class="nav-icon" id="monsters">
+            </div>
+            <div class="nav-icon-wrapper in-line-block">
+              <img src="images/Materials.png" alt="Materials" class="nav-icon" id="materials">
+            </div>
+            <div class="nav-icon-wrapper in-line-block">
+              <img src="images/Equipment.png" alt="Equipment" class="nav-icon" id="equipment">
+            </div>
+            <div class="nav-icon-wrapper in-line-block">
+              <img src="images/Treasure.png" alt="Treasure" class="nav-icon" id="treasure">
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <div id="filler">
+
+    </div>
     
 </body>
+
+<script src="js/axios.min.js"></script>
+<script src="js/main.js"></script>
 
 </html>
