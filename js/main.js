@@ -4,13 +4,20 @@ const textInput = document.querySelector('#compendium-search');
 const searchForm = document.querySelector('#submit-button');
 const container = document.querySelector('#entries-container');
 
+const navigate = (id) => {
+    window.location.href = `/compendium.html#${id}`;
+}
+
 // Creates the template for the data response
 const createTemplate = (data) => {
     return `
-        <div class="compendium-result">
+        <div class="compendium-result" onclick="navigate(${data.id})">
             <img class="compendium-img" src="${data.image}" data-id="${data.id}">
-            <p class="hylia-font">${data.name}</p>
-            <p class="hylia-font">${data.id}</p>
+            <div class="result-body">
+                <p class="result-id">#${data.id}</p>
+                <hr class="result-divider">
+                <h2 class="result-name">${data.name}</h2>
+            </div>
         </div>
     `
 }
@@ -22,6 +29,10 @@ const getAllItems = () => {
             container.innerHTML = "";
             const compendiumArray = response.data.data;
 
+            compendiumArray.sort((a, b) => {
+                return a.id - b.id;
+            });
+
             compendiumArray.forEach(item => {
                 // console.log(item);
 
@@ -30,19 +41,7 @@ const getAllItems = () => {
                 container.appendChild(divTag);
             });
         });
-}
-
-// Modal
-// container.addEventListener('click', function (event) {
-//     console.log(event.target.dataset.id);
-//     axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${item.id}`)
-
-//         .then(response => {
-
-
-
-//         })
-// });
+};
 
 // Filter using the Nav Icons
 categoryFilters.forEach(item => {
@@ -59,6 +58,11 @@ categoryFilters.forEach(item => {
                 .then(response => {
 
                     const compendiumArray = response.data.data;
+
+                    compendiumArray.sort((a, b) => {
+                        return a.id - b.id;
+                    });
+
                     container.innerHTML = "";
 
                     compendiumArray.forEach(item => {
@@ -85,7 +89,7 @@ searchForm.addEventListener('click', function (event) {
 
         .then(response => {
 
-            console.log(response, "its me DAN!");
+            console.log(response);
 
             const item = response.data.data;
             const container = document.querySelector('#entries-container');

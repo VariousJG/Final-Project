@@ -4,8 +4,8 @@
 }
 
 body{
-    background-image: url("https://gadhagod.github.io/hyrule-compendium-demo/images/texture.jpeg") ;
     color: white;
+    font-family: "hylia-serif-beta-regular", sans-serif;
 }
 
 /* Font Styling - This is currently not working */
@@ -14,15 +14,28 @@ body{
   src: url("../fonts/HyliaSerifBeta-Regular.otf") format("opentype");
 }
 
+.hide {
+  display: none;
+}
+
 .hylia-font {
-  font-family: "hylia-serif-beta-regular", sans-serif;
+  padding-inline: 5px;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  width: 100vw;
+  background-image: url("https://gadhagod.github.io/hyrule-compendium-demo/images/texture.jpeg") ;
+  z-index: -1;
 }
 
 /* Compendium Header */
 
 #nav-container{
   background-color: black;
-  border: solid #20e3ff;
+  border: solid rgba(26, 112, 185, 0.85);
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -30,9 +43,10 @@ body{
   padding-top: 0rem;
   width: 100%;
   top: 0.0rem;
+  z-index: 10;
 }
 
-.compendiumHeader{
+.compendium-header{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -40,9 +54,10 @@ body{
   padding-inline: 2.5rem;
   width: 100%;
   padding: 1.5rem;
+  position: relative;
 }
 
-.compendiumHeader > div{
+.compendium-header > div{
 width: 33.33%;
 }
 
@@ -96,19 +111,58 @@ justify-content: center;
 /* Icons and Tiles */
 #entries-container{
   margin-top: 145px;
+  margin-inline: auto;
+  padding-inline: 2rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 5rem;
+  justify-content: center;
+  max-width: 1770px;
 }
 
-.compendium-result{
-  margin: 5rem;
-  font-size: small;
+.compendium-result {
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.657);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 0.3rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.compendium-result::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0rem 0rem 4rem rgba(26, 112, 185, 0.85);
+  transform: scale(0.1);
+  opacity: 0;
+  transition: opacity 0.6s, transform 0.8s;
+  z-index: -1;
+}
+
+.compendium-result:hover::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .compendium-img{
-  max-width: 150px;
+  max-width: 250px;
 }
 
-.compendium-img :hover{
-  cursor: pointer;
+.result-divider {
+  margin-bottom: 0.5rem;
+}
+
+.single-compendium-result{
+/* use grid 2 coloumns
+be sure to use gap instead of margin for spacing.
+*/
+}
+
+.single-result-body{
+  
 }
