@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding:0;
+}
+
 body{
     background-image: url("https://gadhagod.github.io/hyrule-compendium-demo/images/texture.jpeg") ;
     color: white;
@@ -5,70 +10,99 @@ body{
 
 /* Font Styling - This is currently not working */
 @font-face {
-    font-family: "hylia-serif-beta-regular";
-    src: url("../fonts/HyliaSerifBeta-Regular.otf") format("opentype");
-  }
+  font-family: "hylia-serif-beta-regular";
+  src: url("../fonts/HyliaSerifBeta-Regular.otf") format("opentype");
+}
 
-  .hylia-font {
-    font-family: "hylia-serif-beta-regular", sans-serif;
-  }
+.hylia-font {
+  font-family: "hylia-serif-beta-regular", sans-serif;
+}
 
 /* Compendium Header */
 
+#nav-container{
+  background-color: black;
+  border: solid #20e3ff;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: fixed;
+  padding-top: 0rem;
+  width: 100%;
+  top: 0.0rem;
+}
+
 .compendiumHeader{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2.5rem;
+  width: 1rem;
 }
 
 .searchFunction{
-    margin: 0;
+  margin: 0;
 }
 
-
 /* Nav Bar */
-  .nav-icon {
-    margin: 0.5rem;
-    transition: transform 0.5s ease;
-  }
-  
-  .nav-icon:hover {
-    transform: scale(1.2);
-  }
-  
-  .nav-icon.selected {
-    transform: scale(1.2);
-    box-shadow: -1px 1px 16px 8px rgba(26, 112, 185, 0.85);
-  }
-  
-  #navigation-icons {
-    padding-top: 1rem;
-    height: 5.125rem;
-    position: fixed;
-    width: 100%;
-    top: 3.9rem;
-  }
-  
-  .nav-icon-wrapper > img {
-    width: 3.938rem;
-    height: 3.25rem;
-  }
+.nav-icon {
+  margin: 0.5rem;
+  transition: transform 0.5s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* .nav-icon.selected {
+  transform: scale(1.2);
+  box-shadow: -1px 1px 16px 8px rgba(26, 112, 185, 0.85);
+} */
+
+#navigation-icons {
+  padding-top: 1rem;
+  height: 5.125rem;
+  width: 100%;
+  top: 0.9rem;
+}
+
+.nav-icon-wrapper > img {
+  width: 3.938rem;
+  height: 3.25rem;
+}
 
 .center {
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .row {
-    display: flex;
+  display: flex;
 }
 
 .in-line-block {
-    display: inline-block;
+  display: inline-block;
 }
 
-/* .background-dark {
-    background-color: rgb(26, 20, 20);
-} */
+
+/* Icons and Tiles */
+#entries-container{
+  margin-top: 145px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.compendium-result{
+  margin: 5rem;
+  font-size: small;
+}
+
+.compendium-img{
+  max-width: 150px;
+}
+
+.compendium-img :hover{
+  cursor: pointer;
+}
