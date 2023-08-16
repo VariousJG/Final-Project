@@ -38,7 +38,12 @@ body{
   align-items: center;
   justify-content: space-between;
   padding-inline: 2.5rem;
-  width: 1rem;
+  width: 100%;
+  padding: 1.5rem;
+}
+
+.compendiumHeader > div{
+width: 33.33%;
 }
 
 .searchFunction{
@@ -46,6 +51,11 @@ body{
 }
 
 /* Nav Bar */
+.nav-icon-container{
+display: flex;  
+justify-content: center;
+}
+
 .nav-icon {
   margin: 0.5rem;
   transition: transform 0.5s ease;
@@ -56,10 +66,10 @@ body{
   cursor: pointer;
 }
 
-/* .nav-icon.selected {
+.nav-icon.selected {
   transform: scale(1.2);
   box-shadow: -1px 1px 16px 8px rgba(26, 112, 185, 0.85);
-} */
+}
 
 #navigation-icons {
   padding-top: 1rem;
@@ -73,17 +83,13 @@ body{
   height: 3.25rem;
 }
 
-.center {
-  justify-content: center;
-  align-items: center;
-}
-
-.row {
-  display: flex;
-}
-
 .in-line-block {
   display: inline-block;
+}
+
+.searchFunction{
+  display: flex;  
+  justify-content: flex-end;
 }
 
 

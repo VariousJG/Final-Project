@@ -1,110 +1,105 @@
 // - Variables
-const creatureButton = document.querySelector('#creatures');
-const monsterButton = document.querySelector('#monsters');
-const materialButton = document.querySelector('#materials');
-const equipmentButton = document.querySelector('#equipment');
-const treasureButton = document.querySelector('#treasure');
-
 const categoryFilters = document.querySelectorAll('.nav-icon')
-
 const textInput = document.querySelector('#compendium-search');
-const searchForm = document.querySelector('.searchFunction');
+const searchForm = document.querySelector('#submit-button');
 const container = document.querySelector('#entries-container');
 
+// Creates the template for the data response
+const createTemplate = (data) => {
+    return `
+        <div class="compendium-result">
+            <img class="compendium-img" src="${data.image}" data-id="${data.id}">
+            <p class="hylia-font">${data.name}</p>
+            <p class="hylia-font">${data.id}</p>
+        </div>
+    `
+}
+
 // Opening Screen with all items
-axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/all`)
-    .then(response => {
+const getAllItems = () => {
+    axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/all`)
+        .then(response => {
+            container.innerHTML = "";
+            const compendiumArray = response.data.data;
 
-        const compendiumArray = response.data.data;
+            compendiumArray.forEach(item => {
+                // console.log(item);
 
-        compendiumArray.forEach(item => {
-            // console.log(item);
-
-            const divTag = document.createElement('div');
-            divTag.innerHTML = `
-
-            <div class="compendium-result">
-                <img class="compendium-img" src="${item.image}" data-id="${item.id}">
-                <p class="hylia-font">${item.name}</p>
-                <p class="hylia-font">${item.id}</p>
-            </div>
-                `
-
-
-            container.appendChild(divTag);
+                const divTag = document.createElement('div');
+                divTag.innerHTML = createTemplate(item);
+                container.appendChild(divTag);
+            });
         });
-
-    });
+}
 
 // Modal
-container.addEventListener('click', function (event) {
-    console.log(event.target.dataset.id);
-    axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${item.id}`)
+// container.addEventListener('click', function (event) {
+//     console.log(event.target.dataset.id);
+//     axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${item.id}`)
 
-        .then(response => {
+//         .then(response => {
 
 
 
-        })
-});
+//         })
+// });
 
 // Filter using the Nav Icons
 categoryFilters.forEach(item => {
     item.addEventListener('click', function (event) {
-        console.log(item.id);
+        if (this.classList.contains('selected')) {
+            this.classList.remove('selected')
+            getAllItems();
+        } else {
+            if (document.querySelector('.selected')) {
+                document.querySelector('.selected').classList.remove('selected');
+            }
+            this.classList.add('selected')
+            axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/category/${item.id}`)
+                .then(response => {
 
-        axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/category/${item.id}`)
-            .then(response => {
+                    const compendiumArray = response.data.data;
+                    container.innerHTML = "";
 
-                const compendiumArray = response.data.data;
-                container.innerHTML = "";
+                    compendiumArray.forEach(item => {
 
-                compendiumArray.forEach(item => {
+                        const divTag = document.createElement('div');
+                        divTag.innerHTML = createTemplate(item);
+                        container.appendChild(divTag);
+                    });
 
-                    const divTag = document.createElement('div');
-                    divTag.innerHTML = `
-                    <div class="compendium-result">
-                        <img class="compendium-img" src="${item.image}" data-id="${item.id}">
-                        <p class="hylia-font">${item.name}</p>
-                        <p class="hylia-font">${item.id}</p>
-                    </div>
-                    `;
-                    container.appendChild(divTag);
                 });
+        }
 
-            });
 
     });
 });
 
 // Search
-searchForm.addEventListener('submit', function (event) {
+searchForm.addEventListener('click', function (event) {
     event.preventDefault()
-    const userSearch = textInput.value;
+    const userSearch = document.querySelector('#compendium-search')
+    const userSearchValue = userSearch.value;
 
-    axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${userSearch}`)
+    axios.get(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${userSearchValue}`)
 
         .then(response => {
 
-            console.log(response);
+            console.log(response, "its me DAN!");
 
             const item = response.data.data;
             const container = document.querySelector('#entries-container');
             container.innerHTML = "";
 
             const divTag = document.createElement('div');
-            divTag.innerHTML = `
-
-            <div class="compendium-result">
-                <img class="compendium-img" src="${item.image}" data-id="${item.id}">
-                <p class="hylia-font">${item.name}</p>
-                <p class="hylia-font">${item.id}</p>
-            </div>
-            `
+            divTag.innerHTML = createTemplate(item);
             container.appendChild(divTag);
 
         });
 });
+
+// This calls all the items
+getAllItems();
 
 
 
