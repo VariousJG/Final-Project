@@ -1,3 +1,5 @@
+//JavaScript for the Index.html
+
 // - Variables
 const categoryFilters = document.querySelectorAll('.nav-icon')
 const textInput = document.querySelector('#compendium-search');
@@ -99,19 +101,12 @@ searchForm.addEventListener('click', function (event) {
             divTag.innerHTML = createTemplate(item);
             container.appendChild(divTag);
 
+        })
+        .catch(response => {
+            console.log(response);
+            container.innerHTML = "Not Found";
         });
 });
 
 // This calls all the items
 getAllItems();
-
-
-
-/*
-Psuedo
-
-- A modal that shows the relevant stats and Image of the entry selected. Will need a button to close it once selected
-
-- The Favourite button is a requirment but I don't know how that works
-
-*/

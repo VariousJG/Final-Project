@@ -1,3 +1,5 @@
+//JavaScript for the conpendium.html
+
 const handleArrayItems = (arr) => {
     let template = '';
     console.log(arr);
@@ -6,7 +8,7 @@ const handleArrayItems = (arr) => {
     if (arr.length == 0) return '<span>NA</span>';
 
     arr.forEach(item => {
-        template = template + `<span>${item}</span>`
+        template = template + `<span>${item} <br></span>`
     });
 
     return template;
@@ -17,7 +19,7 @@ const createTemplate = (data) => {
         <div class="single-compendium-result"> 
             <div class="">
                 <h2 class="result-name">#${data.id} ${data.name}</h2>
-                <img class="compendium-img" src="${data.image}" data-id="${data.id}">
+                <img class="single-compendium-img" src="${data.image}" data-id="${data.id}">
             </div>
 
             <div class="single-result-body">
