@@ -7,7 +7,7 @@ const searchForm = document.querySelector('#submit-button');
 const container = document.querySelector('#entries-container');
 
 const navigate = (id) => {
-    window.location.href = `JSD-Final-Project/compendium.html#${id}`;
+    window.location.href = `/compendium.html#${id}`;
 }
 
 // Creates the template for the data response
